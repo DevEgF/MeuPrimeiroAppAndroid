@@ -36,5 +36,14 @@ class MainActivity : AppCompatActivity() {
             this?.text = "Meu primeiro App Android!"
             this?.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
         }
+
+        supportFragmentManager.beginTransaction().add(
+            R.id.flMainContainer,
+            BlankFragment.newInstance(
+                name = "Bernardo Slailati",
+                age = 29,
+                isMale = true
+            )
+        ).commit()
     }
 }
