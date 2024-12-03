@@ -1,4 +1,4 @@
-package com.dev.bernardoslailati.meuprimeiroappandroid
+package com.dev.bernardoslailati.meuprimeiroappandroid.ui
 
 import android.content.Context
 import android.content.Intent
@@ -11,8 +11,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.dev.bernardoslailati.meuprimeiroappandroid.R
 import com.dev.bernardoslailati.meuprimeiroappandroid.broadcastreceiver.LowBatteryBroadcastReceiver
 import com.dev.bernardoslailati.meuprimeiroappandroid.databinding.ActivityMainBinding
+import com.dev.bernardoslailati.meuprimeiroappandroid.service.SyncDataService
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +60,8 @@ class MainActivity : AppCompatActivity() {
         ).commit()
 
         registerReceiver(lowBatteryBroadcastReceiver, lowBatteryIntentFilter)
+        val intent = Intent(this, SyncDataService::class.java)
+        startService(intent)
     }
 
     private fun showToast(context: Context) {
