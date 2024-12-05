@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.MeuPrimeiroAppAndroid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MeuPrimeiroAppAndroid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +11,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/poppins</item>
+        <!-- Customize your dark theme here. -->
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="materialButtonStyle">@style/CustomDarkButton</item>
+    </style>
+
+    <style name="CustomDarkButton" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/teal_200</item>
     </style>
 </resources>
