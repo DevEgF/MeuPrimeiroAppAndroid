@@ -1,13 +1,16 @@
 package com.dev.bernardoslailati.meuprimeiroappandroid
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.dev.bernardoslailati.MainActivity2
 import com.dev.bernardoslailati.meuprimeiroappandroid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("MainActivity", "onCreate")
         enableEdgeToEdge()
 
         val myClass = MyClass(context = this)
@@ -36,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             this?.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
         }
 
+        binding.button?.setOnClickListener {
+            startActivity(Intent(this, MainActivity2::class.java))
+        }
+
         supportFragmentManager.beginTransaction().add(
             R.id.flMainContainer,
             BlankFragment.newInstance(
@@ -46,11 +54,41 @@ class MainActivity : AppCompatActivity() {
         ).commit()
     }
 
-    fun showToast(context: Context) {
+    private fun showToast(context: Context) {
         Toast.makeText(
             context,
             "Hello World!",
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("MainActivity", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("MainActivity", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("MainActivity", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("MainActivity", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("MainActivity", "onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("MainActivity", "onDestroy")
     }
 }
