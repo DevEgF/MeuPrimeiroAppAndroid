@@ -1,7 +1,6 @@
 package com.dev.bernardoslailati.meuprimeiroappandroid
 
-import android.content.Intent
-import android.net.Uri
+import android.content.Context
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -19,10 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val url = "https://www.rocketseat.com.br"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
+        val myClass = MyClass(context = this)
 
+        showToast(context = this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -38,8 +36,6 @@ class MainActivity : AppCompatActivity() {
             this?.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
         }
 
-        val color = this.getColor(R.color.white)
-
         supportFragmentManager.beginTransaction().add(
             R.id.flMainContainer,
             BlankFragment.newInstance(
@@ -48,5 +44,13 @@ class MainActivity : AppCompatActivity() {
                 isMale = true
             )
         ).commit()
+    }
+
+    fun showToast(context: Context) {
+        Toast.makeText(
+            context,
+            "Hello World!",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
