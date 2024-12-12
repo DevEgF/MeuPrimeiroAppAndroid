@@ -4,4 +4,5 @@
     <string name="android_logo">Android Logo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_age_is_male">\nNome: %1$s\nIdade: %2$s anos\nSexo: %3$s</string>
 </resources>
