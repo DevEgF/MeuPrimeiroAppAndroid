@@ -1,12 +1,12 @@
-package com.dev.bernardoslailati.meuprimeiroappandroid
+package com.dev.bernardoslailati.meuprimeiroappandroid.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
+import com.dev.bernardoslailati.meuprimeiroappandroid.R
 import com.dev.bernardoslailati.meuprimeiroappandroid.databinding.FragmentBlankBinding
 
 // TODO: Rename parameter arguments, choose names that match
