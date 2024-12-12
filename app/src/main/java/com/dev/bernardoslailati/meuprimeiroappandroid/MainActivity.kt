@@ -1,7 +1,10 @@
 package com.dev.bernardoslailati.meuprimeiroappandroid
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val url = "https://www.rocketseat.com.br"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -26,16 +33,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-//        val tvMyFirstAndroidApp = findViewById<TextView>(R.id.tvMyFirstAndroidApp2)
-//        with(tvMyFirstAndroidApp) {  //ERRO!
-//            text = "Meu primeiro App Android!"
-//            textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-//        }
-
         with(binding.tvMyFirstAndroidApp) {
-            this?.text = "Meu primeiro App Android!"
+            this?.text = getString(R.string.my_first_android_app)
             this?.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
         }
+
+        val color = this.getColor(R.color.white)
 
         supportFragmentManager.beginTransaction().add(
             R.id.flMainContainer,
