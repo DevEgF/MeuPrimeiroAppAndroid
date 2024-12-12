@@ -2,6 +2,7 @@ package com.dev.bernardoslailati.meuprimeiroappandroid
 
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -10,12 +11,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.dev.bernardoslailati.MainActivity2
+import com.dev.bernardoslailati.meuprimeiroappandroid.broadcastreceiver.LowBatteryBroadcastReceiver
 import com.dev.bernardoslailati.meuprimeiroappandroid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val lowBatteryBroadcastReceiver = LowBatteryBroadcastReceiver()
+    private val lowBatteryIntentFilter = IntentFilter(Intent.ACTION_BATTERY_LOW)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +56,8 @@ class MainActivity : AppCompatActivity() {
                 isMale = true
             )
         ).commit()
+
+        registerReceiver(lowBatteryBroadcastReceiver, lowBatteryIntentFilter)
     }
 
     private fun showToast(context: Context) {
@@ -89,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        unregisterReceiver(lowBatteryBroadcastReceiver)
         Log.d("MainActivity", "onDestroy")
     }
 }
