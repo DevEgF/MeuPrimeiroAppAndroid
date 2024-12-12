@@ -1,12 +1,14 @@
-package com.dev.bernardoslailati.meuprimeiroappandroid.ui
+package com.dev.bernardoslailati.meuprimeiroappandroid
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
-import com.dev.bernardoslailati.meuprimeiroappandroid.R
 import com.dev.bernardoslailati.meuprimeiroappandroid.databinding.FragmentBlankBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -32,17 +34,18 @@ class BlankFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("BlankFragment", "onDestroyView")
         _binding = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Log.d("BlankFragment", "onCreate")
         requireActivity().getString(R.string.hello_blank_fragment)
         requireContext().getString(R.string.hello_blank_fragment)
         context?.getString(R.string.hello_blank_fragment)
         getString(R.string.hello_blank_fragment)
-        
+
         requireActivity().applicationContext
 
         context?.let {
@@ -64,6 +67,7 @@ class BlankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("BlankFragment", "onCreateView")
         _binding = FragmentBlankBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -71,7 +75,7 @@ class BlankFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Log.d("BlankFragment", "onViewCreated")
 
         binding.tvFragmentContent.text = getString(
             R.string.name_age_is_male,
@@ -79,6 +83,41 @@ class BlankFragment : Fragment() {
             param2.toString(),
             if (param3 == true) "Masculino" else "Feminino"
         ).trimIndent()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("BlankFragment", "onAttach")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("BlankFragment", "onDetach")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("BlankFragment", "onDestroyView")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("BlankFragment", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("BlankFragment", "onResume")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("BlankFragment", "onStop")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("BlankFragment", "onSaveInstanceState")
     }
 
     companion object {
